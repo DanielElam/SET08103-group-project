@@ -1,10 +1,9 @@
 sudo: required
 language: java
 jdk:
-  - oraclejdk13
   - openjdk13
 services:
   - docker
 after_success:
-  - docker build -t se_methods .
-  - docker run se_methods
+  - docker-compose build
+  - docker-compose up
