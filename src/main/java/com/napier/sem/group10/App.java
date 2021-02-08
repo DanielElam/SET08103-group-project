@@ -5,25 +5,33 @@ import com.napier.sem.group10.filters.*;
 import java.sql.*;
 
 public class App {
-    private static final String _databaseHost = "localhost:3306";
+    private static final String _databaseHost = "db:3306";
     private static final String _databaseStore = "world";
     private static final String _databaseUsername = "root";
     private static final String _databasePassword = "therecanbeonlyone";
 
     private static Connection _connection;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         var databaseUrl = String.format("jdbc:mysql://%s/%s?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC",
                 _databaseHost, _databaseStore);
 
-        try { // Attempt to connect to the database
-            _connection = DriverManager.getConnection(
-                    databaseUrl,
-                    _databaseUsername, _databasePassword);
-        } catch (SQLException ex) {
-            System.out.println("An error occurred attempting to connect to the database.");
-            System.out.println(ex.getMessage());
-            ex.printStackTrace();
+        for (; ; ) { // bad hack - mysql isn't ready to start with so keep trying to connect...
+            try {
+                System.out.println("Trying to connect to MySQL database...");
+                _connection = DriverManager.getConnection(
+                        databaseUrl,
+                        _databaseUsername, _databasePassword);
+                System.out.println("Connected to MySQL database.");
+                break;
+            } catch (SQLException ex) {
+
+                //System.out.println("An error occurred attempting to connect to the database.");
+                System.out.println(ex.getMessage());
+                //ex.printStackTrace();
+
+            }
+            Thread.sleep(2000);
         }
 
         // TODO: allow user to select, input parameters
