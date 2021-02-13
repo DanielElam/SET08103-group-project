@@ -7,6 +7,8 @@ import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.napier.sem.group10.filters.city.*;
+import com.napier.sem.group10.filters.capitalcity.*;
 import com.napier.sem.group10.filters.country.*;
 import fi.iki.elonen.NanoHTTPD;
 
@@ -38,12 +40,20 @@ public class App extends NanoHTTPD {
      * Map all implementations of IPopulationResult to their command name.
      */
     private void registerHandlers() {
-        registerHandler(new CountriesInWorldOrganisedByLargestPopToSmallest());
-        registerHandler(new CountriesInRegionOrganisedByLargestPopToSmallest());
-        registerHandler(new CountriesInContinentOrganisedByLargestPopToSmallest());
-        registerHandler(new TopNCountriesInRegion());
-        registerHandler(new TopNCountriesInContinent());
-        registerHandler(new TopNCountriesInWorld());
+        registerHandler(new CountriesInWorld());
+        registerHandler(new CountriesInRegion());
+        registerHandler(new CountriesInContinent());
+
+        registerHandler(new CitiesInContinent());
+        registerHandler(new CitiesInCountry());
+        registerHandler(new CitiesInDistrict());
+        registerHandler(new CitiesInRegion());
+        registerHandler(new CitiesInWorld());
+
+        registerHandler(new CapitalCitiesInWorld());
+        registerHandler(new CapitalCitiesInRegion());
+        registerHandler(new CapitalCitiesInContinent());
+
     }
 
     /**
@@ -89,12 +99,11 @@ public class App extends NanoHTTPD {
      * @param args   List of user-provided parameters.
      * @return A string containing either the SQL rows in CSV format or an error string.
      */
-    private String executeCommand(ICommandHandler result, String[] args) {
+    private String executeCommand(ICommandHandler result, Map<String, String> args) {
         StringBuilder resultBuilder = new StringBuilder();
         try {
-            var statement = _connection.createStatement();
-            var sqlString = result.getSqlStatement(args);
-            ResultSet set = statement.executeQuery(sqlString);
+            var statement = result.prepareStatement(_connection, args);
+            ResultSet set = statement.executeQuery();
             while (set.next()) {
                 String line = result.getResultRow(set);
                 resultBuilder.append(line);
@@ -131,14 +140,14 @@ public class App extends NanoHTTPD {
                 return newFixedLengthResponse("!ERROR");
             }
 
-            String result = executeCommand(handler, null);
+            String result = executeCommand(handler, session.getParms());
             return newFixedLengthResponse(result);
         } else { // otherwise, serve the HTML page.
             String msg = "";
             try {
                 msg = new String(Files.readAllBytes(Paths.get("C:\\Users\\Daniel\\IdeaProjects\\SEM-CW\\src\\main\\resources\\sem-cw.html")));
+            } catch (IOException e) {
             }
-            catch (IOException e) {}
             return newFixedLengthResponse(msg);
         }
     }

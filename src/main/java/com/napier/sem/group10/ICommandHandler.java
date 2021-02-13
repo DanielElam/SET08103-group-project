@@ -1,7 +1,10 @@
 package com.napier.sem.group10;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Map;
 
 public interface ICommandHandler {
     /**
@@ -9,7 +12,7 @@ public interface ICommandHandler {
      * @param args Any user-provided parameters.
      * @return An SQL statement string
      */
-    public String getSqlStatement(String[] args);
+    public PreparedStatement prepareStatement(Connection connection, Map<String, String> args) throws SQLException;
 
     /**
      * Returns the result as a CSV row line.
