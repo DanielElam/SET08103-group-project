@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial;
+        }
+
+        /* Style the tab */
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+        /* Style the buttons inside the tab */
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+            background-color: #ddd;
+        }
+
+        /* Create an active/current tablink class */
+        .tab button.active {
+            background-color: #ccc;
+        }
+
+        /* Style the tab content */
+        .tabcontent {
+            display: none;
+            padding: 16px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Population Report Tool</h2>
+    <p>Select a tab to see related reports.</p>
+
+    <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'Country')">Country</button>
+        <button class="tablinks" onclick="openTab(event, 'City')">City</button>
+        <button class="tablinks" onclick="openTab(event, 'CapitalCity')">CapitalCity</button>
+        <button class="tablinks" onclick="openTab(event, 'Population')">Population</button>
+        <button class="tablinks" onclick="openTab(event, 'Language')">Language</button>
+    </div>
+
+    <div id="Country" class="tabcontent">
+        <label for="countryReport">Choose a query:</label>
+        <select name="countryReport">
+            <option value="country1">All the countries in the world organised by largest population to smallest</option>
+            <option value="country2">All the countries in a continent organised by largest population to smallest
+            </option>
+            <option value="country3">All the countries in a region organised by largest population to smallest</option>
+            <option value="country4-n">The top N populated countries in the world where N is provided by the user
+            </option>
+            <option value="country5-n">The top N populated countries in a continent where N is provided by the user
+            </option>
+            <option value="country6-n">The top N populated countries in a region where N is provided by the user
+            </option>
+        </select>
+        <span class="inputArgContainer">
+            <label for="countryInputArg">N:</label>
+            <input name="countryInputArg" type="number" value="10" />
+        </span>
+        <button onclick="executeCommand()">Execute Query</button>
+        <h3>Country Report</h3>
+        <table style="width:100%">
+        </table>
+    </div>
+
+    <div id="City" class="tabcontent">
+        <label for="cityReport">Choose a query:</label>
+        <select name="cityReport">
+            <option value="country1">All the countries in the world organised by largest population to smallest</option>
+            <option value="country2">All the countries in a continent organised by largest population to smallest
+            </option>
+            <option value="country3">All the countries in a region organised by largest population to smallest</option>
+            <option value="country4-n">The top N populated countries in the world where N is provided by the user
+            </option>
+            <option value="country5-n">The top N populated countries in a continent where N is provided by the user
+            </option>
+            <option value="country6-n">The top N populated countries in a region where N is provided by the user
+            </option>
+        </select>
+        <span class="inputArgContainer">
+            <label for="cityInputArg">N:</label>
+            <input name="cityInputArg" type="number" value="10" />
+        </span>
+        <button onclick="executeCommand()">Execute Query</button>
+        <h3>City Report</h3>
+        <table style="width:100%">
+        </table>
+    </div>
+
+    <div id="CapitalCity" class="tabcontent">
+        <h3>Capital City Report</h3>
+        <p>Tokyo is the capital of Japan.</p>
+    </div>
+
+    <div id="Population" class="tabcontent">
+        <h3>Population Report</h3>
+        <p>Tokyo is the capital of Japan.</p>
+    </div>
+
+    <div id="Language" class="tabcontent">
+        <h3>Language Report</h3>
+        <p>Tokyo is the capital of Japan.</p>
+    </div>
+
+    <script>
+        var url = "http://127.0.0.1:2904";
+        var columnsByCategory = { "Country": ["Code", "Name", "Continent", "Region", "Population", "Capital"] }
+        var currentTab = 'Country';
+
+        // Code for this function is taken from https://stackoverflow.com/a/8497474
+        // Return array of string values, or NULL if CSV string not well formed.
+        function CSVtoArray(text) {
+            var re_valid = /^\s*(?:'[^'\\]*(?:\\[\S\s][^'\\]*)*'|"[^"\\]*(?:\\[\S\s][^"\\]*)*"|[^,'"\s\\]*(?:\s+[^,'"\s\\]+)*)\s*(?:,\s*(?:'[^'\\]*(?:\\[\S\s][^'\\]*)*'|"[^"\\]*(?:\\[\S\s][^"\\]*)*"|[^,'"\s\\]*(?:\s+[^,'"\s\\]+)*)\s*)*$/;
+            var re_value = /(?!\s*$)\s*(?:'([^'\\]*(?:\\[\S\s][^'\\]*)*)'|"([^"\\]*(?:\\[\S\s][^"\\]*)*)"|([^,'"\s\\]*(?:\s+[^,'"\s\\]+)*))\s*(?:,|$)/g;
+
+            // Return NULL if input string is not well formed CSV string.
+            if (!re_valid.test(text)) return null;
+
+            var a = []; // Initialize array to receive values.
+            text.replace(re_value, // "Walk" the string using replace with callback.
+                function (m0, m1, m2, m3) {
+
+                    // Remove backslash from \' in single quoted values.
+                    if (m1 !== undefined) a.push(m1.replace(/\\'/g, "'"));
+
+                    // Remove backslash from \" in double quoted values.
+                    else if (m2 !== undefined) a.push(m2.replace(/\\"/g, '"'));
+                    else if (m3 !== undefined) a.push(m3);
+                    return ''; // Return empty string.
+                });
+
+            // Handle special case of empty last value.
+            if (/,\s*$/.test(text)) a.push('');
+            return a;
+        };
+
+        async function executeCommand() {
+            var command = document.querySelector(`#${currentTab} select`).value;
+            console.log("Executing command: ", command);
+            var inputArg = document.querySelector(`#${currentTab} .inputArgContainer input`).value;
+            var result = await fetch(`${url}/api/${command}?n=${inputArg}`).then(_ => _.text());
+            populateTable(result);
+        }
+
+        function populateTable(result) {
+            var columns = columnsByCategory[currentTab];
+
+            let html = ``
+
+            html += `<tr>`;
+            columns.forEach(col => {
+                html += `<th>${col}</th>`
+            });
+            html += `</tr>`;
+
+            result.split("\n").forEach(row => {
+                var columns = CSVtoArray(row);
+                console.log(columns);
+                html += `<tr>`;
+                columns.forEach(col => {
+                    html += `<td>${col.replace(/["]+/g, '')}</td>`
+                })
+                html += `</tr>`;
+            })
+
+            var table = document.querySelector(`#${currentTab} table`);
+            table.innerHTML = html;
+            console.log(table);
+        }
+
+        function setupTab(tab) {
+            var querySelect = document.querySelector(`#${tab} select`);
+            var inputArgContainer = document.querySelector(`#${tab} .inputArgContainer`);
+            inputArgContainer.style = "display: none;"
+
+            querySelect.onchange = () => {
+                if (querySelect.value.endsWith("-n")) {
+                    inputArgContainer.style = "display: inline;"
+                }
+                else {
+                    inputArgContainer.style = "display: none;"
+                }
+
+            };
+        }
+
+        function openTab(evt, tabName) {
+            currentTab = tabName;
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        setupTab("Country")
+
+        openTab({ currentTarget: document.getElementsByClassName("tablinks")[0] }, 'Country')
+    </script>
+
+</body>
+
+</html>
