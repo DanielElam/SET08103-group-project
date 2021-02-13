@@ -5,7 +5,7 @@ import com.napier.sem.group10.CountryCommandHandler;
 /**
  * The top N populated countries in a region where N is provided by the user.
  */
-public class TopNPopulatedCountriesInRegion extends CountryCommandHandler {
+public class TopNCountriesInRegion extends CountryCommandHandler {
     @Override
     public String getCommand() {
         return "country6-n";

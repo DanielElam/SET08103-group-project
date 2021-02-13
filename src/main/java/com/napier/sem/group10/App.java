@@ -41,9 +41,9 @@ public class App extends NanoHTTPD {
         registerHandler(new CountriesInWorldOrganisedByLargestPopToSmallest());
         registerHandler(new CountriesInRegionOrganisedByLargestPopToSmallest());
         registerHandler(new CountriesInContinentOrganisedByLargestPopToSmallest());
-        registerHandler(new TopNPopulatedCountriesInRegion());
-        registerHandler(new TopNPopulatedCountriesInContinent());
-        registerHandler(new TopNPopulatedCountriesInWorld());
+        registerHandler(new TopNCountriesInRegion());
+        registerHandler(new TopNCountriesInContinent());
+        registerHandler(new TopNCountriesInWorld());
     }
 
     /**
