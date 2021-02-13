@@ -6,6 +6,7 @@ import java.nio.file.Paths;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Stream;
 
 import com.napier.sem.group10.filters.city.*;
 import com.napier.sem.group10.filters.capitalcity.*;
@@ -13,10 +14,12 @@ import com.napier.sem.group10.filters.country.*;
 import fi.iki.elonen.NanoHTTPD;
 
 public class App extends NanoHTTPD {
-    private static final String _databaseHost = "127.0.0.1:3306";
+    private static final String _databaseHost = IsRunningInsideDocker() ? "db:3306" : "127.0.0.1:3306";
     private static final String _databaseStore = "world";
     private static final String _databaseUsername = "root";
     private static final String _databasePassword = "therecanbeonlyone";
+
+    private static final int MAX_CONNECTION_ATTEMPTS = 10;
 
     private Connection _connection;
     private final Map<String, ICommandHandler> _resultHandlers = new HashMap<>();
@@ -34,6 +37,19 @@ public class App extends NanoHTTPD {
         connectDatabase();
         start(NanoHTTPD.SOCKET_READ_TIMEOUT, false);
         System.out.println("\nHTTP server running @ http://localhost:2904/ \n");
+    }
+
+    /**
+     * Checks if the application is running inside a docker container
+     * Source: https://stackoverflow.com/a/52581380
+     */
+    public static Boolean IsRunningInsideDocker() {
+        try (Stream<String> stream =
+                     Files.lines(Paths.get("/proc/1/cgroup"))) {
+            return stream.anyMatch(line -> line.contains("/docker"));
+        } catch (IOException e) {
+            return false;
+        }
     }
 
     /**
@@ -73,9 +89,9 @@ public class App extends NanoHTTPD {
         var databaseUrl = String.format("jdbc:mysql://%s/%s?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC",
                 _databaseHost, _databaseStore);
 
-        for (; ; ) { // bad hack - mysql isn't ready to start with so keep trying to connect...
+        for (int i = 0; i < MAX_CONNECTION_ATTEMPTS; i++) { // mysql isn't ready to start with so keep trying to connect...
             try {
-                System.out.println("Trying to connect to MySQL database...");
+                System.out.println("Trying to connect to MySQL database @ " + _databaseHost  +  " ...");
                 _connection = DriverManager.getConnection(
                         databaseUrl,
                         _databaseUsername, _databasePassword);

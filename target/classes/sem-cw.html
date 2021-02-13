@@ -84,11 +84,11 @@
             <option value="country2">All the countries in a continent organised by largest population to smallest
             </option>
             <option value="country3">All the countries in a region organised by largest population to smallest</option>
-            <option value="country4-n">The top N populated countries in the world where N is provided by the user
+            <option value="country1-n">The top N populated countries in the world where N is provided by the user
             </option>
-            <option value="country5-n">The top N populated countries in a continent where N is provided by the user
+            <option value="country2-n">The top N populated countries in a continent where N is provided by the user
             </option>
-            <option value="country6-n">The top N populated countries in a region where N is provided by the user
+            <option value="country3-n">The top N populated countries in a region where N is provided by the user
             </option>
         </select>
         <span class="inputArgContainer">
@@ -174,9 +174,20 @@
 
         async function executeCommand() {
             var command = document.querySelector(`#${currentTab} select`).value;
+            var split = command.split("-n")
+
+            command = split[0]
+            let isLimited = split.length == 2;
+
+            let args = [];
+
+            if (isLimited) {
+                var inputArg = document.querySelector(`#${currentTab} .inputArgContainer input`).value;
+                args.push(`limit=${inputArg}`);
+            }
+
             console.log("Executing command: ", command);
-            var inputArg = document.querySelector(`#${currentTab} .inputArgContainer input`).value;
-            var result = await fetch(`${url}/api/${command}?limit=${inputArg}`).then(_ => _.text());
+            var result = await fetch(`${url}/api/${command}?${args.join("&")}`).then(_ => _.text());
             populateTable(result);
         }
 
@@ -193,7 +204,6 @@
 
             result.split("\n").forEach(row => {
                 var columns = CSVtoArray(row);
-                console.log(columns);
                 html += `<tr>`;
                 columns.forEach(col => {
                     html += `<td>${col.replace(/["]+/g, '')}</td>`
@@ -203,7 +213,6 @@
 
             var table = document.querySelector(`#${currentTab} table`);
             table.innerHTML = html;
-            console.log(table);
         }
 
         function setupTab(tab) {
