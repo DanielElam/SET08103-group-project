@@ -1,7 +1,10 @@
 package com.napier.sem.group10;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.*;
 import java.util.HashMap;
@@ -91,7 +94,7 @@ public class App extends NanoHTTPD {
 
         for (int i = 0; i < MAX_CONNECTION_ATTEMPTS; i++) { // mysql isn't ready to start with so keep trying to connect...
             try {
-                System.out.println("Trying to connect to MySQL database @ " + _databaseHost  +  " ...");
+                System.out.println("Trying to connect to MySQL database @ " + _databaseHost + " ...");
                 _connection = DriverManager.getConnection(
                         databaseUrl,
                         _databaseUsername, _databasePassword);
@@ -160,9 +163,18 @@ public class App extends NanoHTTPD {
             return newFixedLengthResponse(result);
         } else { // otherwise, serve the HTML page.
             String msg = "";
-            try {
-                msg = new String(Files.readAllBytes(Paths.get("C:\\Users\\Daniel\\IdeaProjects\\SEM-CW\\src\\main\\resources\\sem-cw.html")));
-            } catch (IOException e) {
+            Path devTestPath = Paths.get("C:\\Users\\Daniel\\IdeaProjects\\SEM-CW\\src\\main\\resources\\sem-cw.html");
+            if (Files.exists(devTestPath)) {
+                try {
+                    msg = new String(Files.readAllBytes(devTestPath));
+                } catch (IOException e) {
+                }
+            } else {
+                try {
+                    URL resource = App.class.getResource("/sem-cw.html");
+                    msg = new String(Files.readAllBytes(Paths.get(resource.toURI())));
+                } catch (IOException | URISyntaxException e) {
+                }
             }
             return newFixedLengthResponse(msg);
         }
