@@ -1,6 +1,9 @@
 package com.napier.sem.group10;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Files;
@@ -9,6 +12,7 @@ import java.nio.file.Paths;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import com.napier.sem.group10.filters.city.*;
@@ -166,14 +170,18 @@ public class App extends NanoHTTPD {
             Path devTestPath = Paths.get("C:\\Users\\Daniel\\IdeaProjects\\SEM-CW\\src\\main\\resources\\sem-cw.html");
             if (Files.exists(devTestPath)) {
                 try {
+                    System.out.println("Serving HTML page from local file.");
                     msg = new String(Files.readAllBytes(devTestPath));
                 } catch (IOException e) {
                 }
             } else {
                 try {
-                    URL resource = App.class.getResource("/sem-cw.html");
-                    msg = new String(Files.readAllBytes(Paths.get(resource.toURI())));
-                } catch (IOException | URISyntaxException e) {
+                    InputStream inputStream = App.class.getResourceAsStream("/sem-cw.html");
+                    msg = new BufferedReader(new InputStreamReader(inputStream))
+                            .lines().collect(Collectors.joining("\n"));
+                } catch (Exception e) {
+                    System.out.println("Error when trying to read sem-cw.html resource: " + e.getMessage());
+                    msg = "Error when trying to read sem-cw.html resource";
                 }
             }
             return newFixedLengthResponse(msg);
