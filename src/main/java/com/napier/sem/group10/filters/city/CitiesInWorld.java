@@ -18,7 +18,7 @@ public class CitiesInWorld extends CityCommandHandler {
 
     @Override
     public PreparedStatement prepareStatement(Connection connection, Map<String, String> args) throws SQLException {
-        PreparedStatement statement = connection.prepareStatement("<TODO>");
+        PreparedStatement statement = connection.prepareStatement("SELECT Code, Name, Continent, Region, Population, Capital FROM cities ORDER BY population DESC LIMIT ?");
         statement.setString(0, args.getOrDefault("limit", "9999999"));
         return statement;
     }
