@@ -16,8 +16,9 @@ public abstract class CityCommandHandler implements ICommandHandler {
     @Override
     public String getResultRow(ResultSet set) throws SQLException {
         String name = set.getString("Name");
+        String country = set.getString("Country");
         String district = set.getString("District");
         int population = set.getInt("Population");
-        return String.format("\"%s\",\"%s\",%d", name, district, population);
+        return String.format("\"%s\",\"%s\",\"%s\",%d", name, country, district, population);
     }
 }
