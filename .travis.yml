@@ -6,4 +6,6 @@ services:
   - docker
 after_success:
   - docker-compose build
-  - docker-compose up --abort-on-container-exit
+  - docker-compose up -d
+  - travis_wait 10
+  - docker-compose down
