@@ -18,8 +18,10 @@ public class CitiesInContinent extends CityCommandHandler {
 
     @Override
     public PreparedStatement prepareStatement(Connection connection, Map<String, String> args) throws SQLException {
-        PreparedStatement statement = connection.prepareStatement("<TODO>");
-        statement.setString(0, args.getOrDefault("limit", "9999999"));
+        PreparedStatement statement = connection.prepareStatement("SELECT Name, District, Population FROM city WHERE CountryCode IN(SELECT Code FROM country WHERE Continent = ?)ORDER BY population DESC LIMIT ?");
+        statement.setString(1, args.get("continent"));
+        int limit = Integer.parseInt(args.getOrDefault("limit", "9999999"));
+        statement.setInt(2, limit);
         return statement;
     }
 }
