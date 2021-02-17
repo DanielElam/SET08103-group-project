@@ -22,7 +22,7 @@ public abstract class CountryCommandHandler implements ICommandHandler {
         String continent = set.getString("Continent");
         String region = set.getString("Region");
         int population = set.getInt("Population");
-        int capital = set.getInt("Capital");
-        return String.format("\"%s\",\"%s\",\"%s\",\"%s\",%d,%d", code, name, continent, region, population, capital);
+        String capital = set.getString("Capital");
+        return String.format("\"%s\",\"%s\",\"%s\",\"%s\",%d,%s", code, name, continent, region, population, capital);
     }
 }
