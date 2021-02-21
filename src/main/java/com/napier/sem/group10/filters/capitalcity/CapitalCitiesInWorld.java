@@ -18,7 +18,7 @@ public class CapitalCitiesInWorld extends CapitalCityCommandHandler {
 
     @Override
     public PreparedStatement prepareStatement(Connection connection, Map<String, String> args) throws SQLException {
-        PreparedStatement statement = connection.prepareStatement("<TODO>");
+        PreparedStatement statement = connection.prepareStatement("SELECT city.Name as Capital, city.Population as Population FROM country JOIN city ON city.ID = country.Capital ORDER BY population DESC;");
         statement.setString(0, args.getOrDefault("limit", "9999999"));
         return statement;
     }
