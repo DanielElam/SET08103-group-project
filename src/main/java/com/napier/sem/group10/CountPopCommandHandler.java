@@ -18,6 +18,6 @@ public abstract class CountPopCommandHandler implements ICommandHandler {
         String name = set.getString("Name");
         int population = set.getInt("Population");
 
-        return String.format("\"%s\",%d", name, population);
+        return String.format("\"%s\",%d,\"N/A\",\"N/A\"", name, population);
     }
 }
