@@ -66,23 +66,23 @@ public class App extends NanoHTTPD {
         registerHandler(new CountriesInRegion());
         registerHandler(new CountriesInContinent());
 
-
         registerHandler(new CitiesInContinent());
         registerHandler(new CitiesInCountry());
         registerHandler(new CitiesInDistrict());
         registerHandler(new CitiesInRegion());
         registerHandler(new CitiesInWorld());
 
+
         registerHandler(new CapitalCitiesInWorld());
         registerHandler(new CapitalCitiesInRegion());
         registerHandler(new CapitalCitiesInContinent());
 
-        registerHandler(new CityPopulation());
-        registerHandler(new CountryPop());
         registerHandler(new PeopleLivingInAndOutOfCitiesInEachContinent());
         registerHandler(new PeopleLivingInAndOutOfCitiesInEachCountry());
         registerHandler(new PeopleLivingInAndOutOfCitiesInEachCountry());
         registerHandler(new PeopleLivingInAndOutOfCitiesInEachRegion());
+        registerHandler(new CityPopulation());
+        registerHandler(new CountryPop());
 
     }
 
