@@ -17,7 +17,7 @@ public class CountryPop extends CountryCommandHandler{
     @Override
     public PreparedStatement prepareStatement(Connection connection, Map<String, String> args) throws SQLException {
         PreparedStatement statement = connection.prepareStatement("SELECT country.Name as name, country.Population FROM country WHERE country.Name = ? ");
-        statement.setString(1, args.get("Name"));
+        statement.setString(1, args.get("country"));
         return statement;
     }
 }

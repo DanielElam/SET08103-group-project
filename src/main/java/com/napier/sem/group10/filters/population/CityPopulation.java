@@ -16,7 +16,7 @@ public class CityPopulation extends CityCommandHandler {
     @Override
     public PreparedStatement prepareStatement(Connection connection, Map<String, String> args) throws SQLException {
         PreparedStatement statement = connection.prepareStatement("SELECT city.Name as Name, city.Population as TotalPop FROM city WHERE city.Name = ? ");
-        statement.setString(1, args.get("name"));
+        statement.setString(1, args.get("city"));
         return statement;
     }
 }
