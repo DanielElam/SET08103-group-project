@@ -4,8 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -18,6 +16,7 @@ import java.util.stream.Stream;
 import com.napier.sem.group10.filters.city.*;
 import com.napier.sem.group10.filters.capitalcity.*;
 import com.napier.sem.group10.filters.country.*;
+import com.napier.sem.group10.filters.population.*;
 import fi.iki.elonen.NanoHTTPD;
 
 public class App extends NanoHTTPD {
@@ -67,6 +66,7 @@ public class App extends NanoHTTPD {
         registerHandler(new CountriesInRegion());
         registerHandler(new CountriesInContinent());
 
+
         registerHandler(new CitiesInContinent());
         registerHandler(new CitiesInCountry());
         registerHandler(new CitiesInDistrict());
@@ -76,6 +76,13 @@ public class App extends NanoHTTPD {
         registerHandler(new CapitalCitiesInWorld());
         registerHandler(new CapitalCitiesInRegion());
         registerHandler(new CapitalCitiesInContinent());
+
+        registerHandler(new CityPopulation());
+        registerHandler(new CountryPop());
+        registerHandler(new PeopleLivingInAndOutOfCitiesInEachContinent());
+        registerHandler(new PeopleLivingInAndOutOfCitiesInEachCountry());
+        registerHandler(new PeopleLivingInAndOutOfCitiesInEachCountry());
+        registerHandler(new PeopleLivingInAndOutOfCitiesInEachRegion());
 
     }
 
