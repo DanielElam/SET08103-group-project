@@ -81,8 +81,13 @@ public class App extends NanoHTTPD {
         registerHandler(new PeopleLivingInAndOutOfCitiesInEachCountry());
         registerHandler(new PeopleLivingInAndOutOfCitiesInEachCountry());
         registerHandler(new PeopleLivingInAndOutOfCitiesInEachRegion());
-        registerHandler(new CityPopulation());
+
+        registerHandler(new WorldPop());
+        registerHandler(new ContinentPop());
+        registerHandler(new RegionPop());
         registerHandler(new CountryPop());
+        registerHandler(new DistrictPop());
+        registerHandler(new CityPopulation());
 
     }
 
