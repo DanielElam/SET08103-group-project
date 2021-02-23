@@ -93,6 +93,7 @@
             </option>
             <option value="country3-n-region">The top N populated countries in a region where N is provided by the user
             </option>
+
         </select>
         <span class="areaArgContainer">
             <label for="areaArg"></label>
@@ -119,7 +120,7 @@
             </option>
             <option value="city5-district">All the cities in a district organised by largest population to smallest
             </option>
-            <option value="city1-n">The top N populated cities in the world</option>
+            <option value="city1-country">The top N populated cities in the world</option>
             <option value="city2-n-continent">The top N populated cities in a continent</option>
             <option value="city3-n-region">The top N populated cities in a region</option>
             <option value="city4-n-country">The top N populated cities in a country</option>
@@ -177,10 +178,14 @@
             <option value="population1">The population of people, people living in cities, and people not living in cities in each continent</option>
             <option value="population2-continent">The population of people, people living in cities, and people not living in cities in each region</option>
             <option value="population3-region">The population of people, people living in cities, and people not living in cities in each country</option>
-            
-            <option value="population1-n">The top N populated capital cities in the world</option>
-            <option value="population2-n-continent">The top N populated capital cities in a continent</option>
-            <option value="population3-n-region">The top N populated capital cities in a region</option>
+
+            <option value="population9">Total population of the world</option>
+            <option value="population4-city">The population of a city</option>
+            <option value="population5-district">The total population of a district</option>
+            <option value="population6-country">The total population of a country</option>
+            <option value="population7-region">The total population of a region</option>
+            <option value="population8-continent">The total population of a continent</option>
+
         
         </select>
         <span class="areaArgContainer">
@@ -266,6 +271,10 @@
                 var value = document.querySelector(`#${currentTab} .areaArgContainer input`).value;
                 args.push(`district=${value}`);
             }
+            else if (command.includes("-city")) {
+                var value = document.querySelector(`#${currentTab} .areaArgContainer input`).value;
+                args.push(`city=${value}`);
+            }
 
             command = split[0]
             console.log("Executing command: ", command);
@@ -329,6 +338,11 @@
                     areaArgContainer.style = "display: inline;"
                     document.querySelector(`#${tab} .areaArgContainer label`).innerHTML = "District: ";
                 }
+                else if (querySelect.value.includes("-city")) {
+                    areaArgContainer.style = "display: inline;"
+                    document.querySelector(`#${tab} .areaArgContainer label`).innerHTML = "City: ";
+                }
+
                 else {
                     areaArgContainer.style = "display: none;"
                 }
