@@ -11,7 +11,7 @@ public class CountryPop extends CountryCommandHandler{
 
     @Override
     public String getCommand() {
-        return "CountryPop";
+        return "population5";
     }
 
     @Override

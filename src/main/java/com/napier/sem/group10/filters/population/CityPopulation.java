@@ -10,7 +10,7 @@ import java.util.Map;
 public class CityPopulation extends CityCommandHandler {
     @Override
     public String getCommand() {
-        return "CityPopulation";
+        return "population1";
     }
 
     @Override
