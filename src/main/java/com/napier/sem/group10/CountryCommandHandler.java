@@ -21,8 +21,8 @@ public abstract class CountryCommandHandler implements ICommandHandler {
         String name = set.getString("Name");
         String continent = set.getString("Continent");
         String region = set.getString("Region");
-        int population = set.getInt("Population");
+        long population = set.getLong("Population");
         String capital = set.getString("Capital");
-        return String.format("\"%s\",\"%s\",\"%s\",\"%s\",%d,%s", code, name, continent, region, population, capital);
+        return String.format("\"%s\",\"%s\",\"%s\",\"%s\",%s,%s", code, name, continent, region, population, capital);
     }
 }

@@ -16,7 +16,7 @@ public abstract class CapitalCityCommandHandler implements ICommandHandler {
     public String getResultRow(ResultSet set) throws SQLException {
         String name = set.getString("Name");
         String country = set.getString("Country");
-        int population = set.getInt("Population");
-        return String.format("\"%s\",\"%s\",%d", name, country, population);
+        long population = set.getLong("Population");
+        return String.format("\"%s\",\"%s\",%s", name, country, population);
     }
 }

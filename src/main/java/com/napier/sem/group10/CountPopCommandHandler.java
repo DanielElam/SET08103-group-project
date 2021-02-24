@@ -16,8 +16,7 @@ public abstract class CountPopCommandHandler implements ICommandHandler {
     @Override
     public String getResultRow(ResultSet set) throws SQLException {
         String name = set.getString("Name");
-        int population = set.getInt("Population");
-
-        return String.format("\"%s\",%d,\"N/A\",\"N/A\"", name, population);
+        long population = set.getLong("Population");
+        return String.format("\"%s\",%s,\"N/A\",\"N/A\"", name, population);
     }
 }

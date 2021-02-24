@@ -17,7 +17,7 @@ public class WorldPop extends CountPopCommandHandler{
 
     @Override
     public PreparedStatement prepareStatement(Connection connection, Map<String, String> args) throws SQLException {
-        PreparedStatement statement = connection.prepareStatement("SELECT SUM(population) FROM country");
+        PreparedStatement statement = connection.prepareStatement("SELECT 'World' as Name, SUM(population) as Population FROM country");
 
         return statement;
     }
