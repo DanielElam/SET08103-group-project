@@ -6,7 +6,7 @@
 
 
 As an employee of the World Health Organisation, I want to produce a report on the top N
-populated cities in a continent/region/country/district where N is provided by the user,
+populated cities in a <br> continent/region/country/district where N is provided by the user,
 so that I can help inform and assist governments or the W.H.O. in the distribution and
 allocation of healthcare resources. 
 
