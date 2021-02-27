@@ -6,7 +6,7 @@
 
 
 As an employee of the World Health Organisation, I want to produce a report on the population <br>
-of a continent/region/country/district/city so that I can supply governments with guidance on 
+of a continent/region/country/district/city so that I can supply governments with guidance on <br>
 vaccine distribution, and the needs of the given area. 
 
 ### Scope
