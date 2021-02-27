@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Map;
 
-public class WorldPop extends CountPopCommandHandler{
+public class WorldPop extends CountPopCommandHandler {
 
     @Override
     public String getCommand() {

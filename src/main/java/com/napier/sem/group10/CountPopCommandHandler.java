@@ -12,7 +12,6 @@ public abstract class CountPopCommandHandler implements ICommandHandler {
      * @param set The SQL result set
      * @return Relevant columns
      */
-
     @Override
     public String getResultRow(ResultSet set) throws SQLException {
         String name = set.getString("Name");

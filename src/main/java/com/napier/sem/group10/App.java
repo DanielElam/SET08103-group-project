@@ -59,7 +59,7 @@ public class App extends NanoHTTPD {
     }
 
     /**
-     * Map all implementations of IPopulationResult to their command name.
+     * Map all implementations of ICommandHandler to their command name.
      */
     private void registerHandlers() {
         registerHandler(new CountriesInWorld());
@@ -92,7 +92,7 @@ public class App extends NanoHTTPD {
     }
 
     /**
-     * Map the given implementation of IPopulationResult to its command name.
+     * Map the given implementation of ICommandHandler to its command name.
      */
     private void registerHandler(ICommandHandler handler) {
         _resultHandlers.put(handler.getCommand(), handler);
@@ -166,8 +166,7 @@ public class App extends NanoHTTPD {
         // if the URL path starts with /api/ then we serve the API request.
         if (uri.startsWith("/api/")) {
             String command = uri.substring(5);
-            System.out.println(command);
-
+            // find the relevant handler for the given command ID
             ICommandHandler handler = _resultHandlers.getOrDefault(command, null);
 
             if (handler == null) {
@@ -175,6 +174,7 @@ public class App extends NanoHTTPD {
                 return newFixedLengthResponse("!ERROR");
             }
 
+            // execute the command handler with the query parameters
             String result = executeCommand(handler, session.getParms());
             return newFixedLengthResponse(result);
         } else { // otherwise, serve the HTML page.
@@ -188,6 +188,8 @@ public class App extends NanoHTTPD {
                 }
             } else {
                 try {
+                    // read the HTML file into memory and return it as the response
+                    // in future this could be cached to avoid unnecessary reads
                     InputStream inputStream = App.class.getResourceAsStream("/sem-cw.html");
                     msg = new BufferedReader(new InputStreamReader(inputStream))
                             .lines().collect(Collectors.joining("\n"));
