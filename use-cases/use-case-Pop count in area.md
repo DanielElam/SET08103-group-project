@@ -11,7 +11,7 @@ vaccine distribution, and the needs of the given area.
 
 ### Scope
 
-??
+Population queries.
 
 ### Level
 

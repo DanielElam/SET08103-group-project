@@ -12,7 +12,7 @@ allocation of healthcare resources.
 
 ### Scope
 
-??
+City queries.
 
 ### Level
 
