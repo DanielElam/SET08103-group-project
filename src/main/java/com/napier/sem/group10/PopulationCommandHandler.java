@@ -16,9 +16,9 @@ public abstract class PopulationCommandHandler implements ICommandHandler {
     @Override
     public String getResultRow(ResultSet set) throws SQLException {
         String name = set.getString("Name");
-        int population = set.getInt("Population");
-        String populationLivingInCities = set.getString("PopulationLivingInCities");
-        String populationNotLivingInCities = set.getString("PopulationNotLivingCities");
-        return String.format("\"%s\",\"%s\",%d", name, population, populationLivingInCities, populationNotLivingInCities);
+        long population = set.getLong("Population");
+        long populationLivingInCities = set.getLong("PopulationLivingInCities");
+        long populationNotLivingInCities = set.getLong("PopulationNotLivingCities");
+        return String.format("\"%s\",\"%s\",%s,%s", name, population, populationLivingInCities, populationNotLivingInCities);
     }
 }

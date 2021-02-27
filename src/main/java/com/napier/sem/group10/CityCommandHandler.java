@@ -18,7 +18,7 @@ public abstract class CityCommandHandler implements ICommandHandler {
         String name = set.getString("Name");
         String country = set.getString("Country");
         String district = set.getString("District");
-        int population = set.getInt("Population");
-        return String.format("\"%s\",\"%s\",\"%s\",%d", name, country, district, population);
+        long population = set.getLong("Population");
+        return String.format("\"%s\",\"%s\",\"%s\",%s", name, country, district, population);
     }
 }
