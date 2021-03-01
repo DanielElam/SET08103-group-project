@@ -5,7 +5,7 @@
 ### Goal in Context
 
 
-As an employee of the World Health Organisation, I want to produce a report on...
+As an employee of the World Health Organisation, I want to produce a report on all the capital cities in the world organised by largest population to smallest, so that I can supply governments with information about the effects of the ongoing pandemic.
 
 ### Scope
 
