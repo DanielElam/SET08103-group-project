@@ -1,0 +1,59 @@
+# USE CASE: 
+
+## CHARACTERISTIC INFORMATION
+
+### Goal in Context
+
+
+As an employee of the World Health Organisation, I want to produce a report on...
+
+### Scope
+
+Population queries.
+
+### Level
+
+Primary task.
+
+### Preconditions
+
+We know which cities are capitals, and they are in the database.
+
+### Success End Condition
+
+A report on... is produced
+
+### Failed End Condition
+
+No report is produced
+
+### Primary Actor
+
+W.H.O. Employee
+
+### Trigger
+
+A request is made by W.H.O. manager/coordinator or government for population
+totals in capital cities.
+
+## MAIN SUCCESS SCENARIO
+
+1. Request is made for capital city information.
+2. W.H.O. employee captures capital city name.
+3. W.H.O. employee, utilising the web UI, searches for and finds the relevant 
+   capital city information.
+4. The capital city data is given to the requesting party.
+
+## EXTENSIONS
+
+2. **capital city does not exist in the database**:
+    i. W.H.O. employee asks requester to alter their request to a definition the
+       database contains.
+
+## SUB-VARIATIONS
+
+None.
+
+## SCHEDULE
+
+**DUE DATE**: Release 1.0
