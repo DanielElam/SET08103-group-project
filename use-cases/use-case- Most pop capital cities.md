@@ -46,7 +46,7 @@ totals in capital cities.
 
 ## EXTENSIONS
 
-2. **capital city does not exist in the database**:
+**capital city does not exist in the database**:
     i. W.H.O. employee asks requester to alter their request to a definition the
        database contains.
 
