@@ -21,7 +21,7 @@ We know which cities are capitals, and they are in the database.
 
 ### Success End Condition
 
-A report on... is produced
+A report on the population's of capital cities in the given area is produced
 
 ### Failed End Condition
 
