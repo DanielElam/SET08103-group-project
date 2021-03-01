@@ -9,7 +9,7 @@ As an employee of the World Health Organisation, I want to produce a report on..
 
 ### Scope
 
-Population queries.
+Capital city queries.
 
 ### Level
 
