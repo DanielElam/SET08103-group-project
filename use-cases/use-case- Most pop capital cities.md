@@ -1,4 +1,4 @@
-# USE CASE: Obtain a report on capital city information
+# USE CASE: 3 Obtain a report on the most populated capital cities in a continent, region, country or district
 
 ## CHARACTERISTIC INFORMATION
 
