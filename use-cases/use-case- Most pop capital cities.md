@@ -47,7 +47,7 @@ totals in capital cities.
 ## EXTENSIONS
 
 **Capital city does not exist in the database**:
-    i. W.H.O. employee asks requester to alter their request to a definition the
+i. W.H.O. employee asks requester to alter their request to a definition the
        database contains.
 
 ## SUB-VARIATIONS

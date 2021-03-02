@@ -50,7 +50,7 @@ distribution between countries in a specific area.
 ## EXTENSIONS
 
 2. **area does not exist in the database**:
-    i. W.H.O. employee asks requester to alter their request to a definition the
+   <br>i. W.H.O. employee asks requester to alter their request to a definition the
        database contains.
 
 ## SUB-VARIATIONS

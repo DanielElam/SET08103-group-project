@@ -51,7 +51,7 @@ distribution between cities and outside cities in a specific area.
 2. **area does not exist in the database**:
    <br> i. W.H.O. employee asks requester to alter their request to a definition the
        database contains.
- 3. **Request is for cities in a district**
+ 2. **Request is for cities in a district**
     <br> i. That is not in the requirements. Inform the requester that this is not a function 
     of the system and ask them to re-define their parameters.
 
