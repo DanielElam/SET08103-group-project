@@ -5,8 +5,8 @@
 ### Goal in Context
 
 
-As an employee of the World Health Organisation, I want to produce a report on the population
-of people, people living in cities, and people not living in cities <br> in each 
+As an employee of the World Health Organisation, I want to produce a report on the population<br>
+of people, people living in cities, and people not living in cities in each 
 continent/region/country, so that I can help inform and assist governments <br> or the W.H.O. in the distribution and
 allocation of healthcare resources.
 ### Scope
