@@ -43,7 +43,7 @@ people speak either Chinese, English, Hindi, Spanish, or Arabic.
 
 1. Request is made for spoken languages information.
 2. W.H.O. employee captures specific languages/s(Chinese, English, Hindi, Spanish, or Arabic, or all)
-3. W.H.O. employee, utilising th web UI, searches for and finds the relevant 
+3. W.H.O. employee, utilising the web UI, searches for and finds the relevant 
    language information.
 4. The report is given to the requesting party.
 
@@ -53,7 +53,7 @@ people speak either Chinese, English, Hindi, Spanish, or Arabic.
    <br>i. W.H.O. employee asks requester to alter their request to a definition the
        database contains.
 2. **Request is for too many languages**
-   <br>i. W.H.O. employee informs requester the languages they can find data for.
+   <br>i. W.H.O. employee informs requester the languages they can find data for.<br>
 2.**The request is for people who don't speak the dominant language in an area**
    <br>i. W.H.O. employee informs requester that they can only produce reports on the number
    of people who do speak a language.
