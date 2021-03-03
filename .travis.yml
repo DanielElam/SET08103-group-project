@@ -7,5 +7,5 @@ services:
 after_success:
   - docker-compose build
   - docker-compose up -d
-  - travis_wait 20
+  - travis_wait 10
   - docker-compose down
