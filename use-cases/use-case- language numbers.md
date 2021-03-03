@@ -1,4 +1,4 @@
-# USE CASE: 6 Obtain a report on the number of people who speak certain languages, and the percentage of the world's population that includes.
+# USE CASE: 5 Obtain a report on the number of people who speak certain languages, and the percentage of the world's population that includes.
 
 ## CHARACTERISTIC INFORMATION
 
