@@ -120,7 +120,7 @@
             </option>
             <option value="city5-district">All the cities in a district organised by largest population to smallest
             </option>
-            <option value="city1-country">The top N populated cities in the world</option>
+            <option value="city1-n">The top N populated cities in the world</option>
             <option value="city2-n-continent">The top N populated cities in a continent</option>
             <option value="city3-n-region">The top N populated cities in a region</option>
             <option value="city4-n-country">The top N populated cities in a country</option>
@@ -175,9 +175,12 @@
     <div id="Population" class="tabcontent">
         <label for="report">Choose a query:</label>
         <select name="report">
-            <option value="population1">The population of people, people living in cities, and people not living in cities in each continent</option>
-            <option value="population2-continent">The population of people, people living in cities, and people not living in cities in each region</option>
-            <option value="population3-region">The population of people, people living in cities, and people not living in cities in each country</option>
+            <option value="population1">The population of people, people living in cities, and people not living in
+                cities in each continent</option>
+            <option value="population2-continent">The population of people, people living in cities, and people not
+                living in cities in each region</option>
+            <option value="population3-region">The population of people, people living in cities, and people not living
+                in cities in each country</option>
 
             <option value="population9">Total population of the world</option>
             <option value="population4-city">The population of a city</option>
@@ -185,8 +188,6 @@
             <option value="population6-country">The total population of a country</option>
             <option value="population7-region">The total population of a region</option>
             <option value="population8-continent">The total population of a continent</option>
-
-        
         </select>
         <span class="areaArgContainer">
             <label for="areaArg"></label>
@@ -203,8 +204,11 @@
     </div>
 
     <div id="Language" class="tabcontent">
+        <select style="display: none;"><option value="language"></option></select>
+        <button onclick="executeCommand()">Execute Query</button>
         <h3>Language Report</h3>
-        <p>Tokyo is the capital of Japan.</p>
+        <table style="width:100%">
+        </table>
     </div>
 
     <script>
@@ -214,6 +218,7 @@
             "City": ["Name", "Country", "District", "Population"],
             "CapitalCity": ["Name", "Country", "Population"],
             "Population": ["Name", "TotalPop", "CityPop", "NonCityPop"],
+            "Language": ["Name", "Population", "Percent"],
         }
         var currentTab = 'Country';
 
@@ -308,46 +313,48 @@
 
         function setupTab(tab) {
             var querySelect = document.querySelector(`#${tab} select`);
-            var limitArgContainer = document.querySelector(`#${tab} .limitArgContainer`);
-            limitArgContainer.style = "display: none;"
+            if (querySelect != null) {
+                var limitArgContainer = document.querySelector(`#${tab} .limitArgContainer`);
+                limitArgContainer.style = "display: none;"
 
-            var areaArgContainer = document.querySelector(`#${tab} .areaArgContainer`);
-            areaArgContainer.style = "display: none;"
+                var areaArgContainer = document.querySelector(`#${tab} .areaArgContainer`);
+                areaArgContainer.style = "display: none;"
 
-            querySelect.onchange = () => {
-                if (querySelect.value.includes("-n")) {
-                    limitArgContainer.style = "display: inline;"
-                }
-                else {
-                    limitArgContainer.style = "display: none;"
-                }
+                querySelect.onchange = () => {
+                    if (querySelect.value.includes("-n")) {
+                        limitArgContainer.style = "display: inline;"
+                    }
+                    else {
+                        limitArgContainer.style = "display: none;"
+                    }
 
-                if (querySelect.value.includes("-continent")) {
-                    areaArgContainer.style = "display: inline;"
-                    document.querySelector(`#${tab} .areaArgContainer label`).innerHTML = "Continent: ";
-                }
-                else if (querySelect.value.includes("-region")) {
-                    areaArgContainer.style = "display: inline;"
-                    document.querySelector(`#${tab} .areaArgContainer label`).innerHTML = "Region: ";
-                }
-                else if (querySelect.value.includes("-country")) {
-                    areaArgContainer.style = "display: inline;"
-                    document.querySelector(`#${tab} .areaArgContainer label`).innerHTML = "Country: ";
-                }
-                else if (querySelect.value.includes("-district")) {
-                    areaArgContainer.style = "display: inline;"
-                    document.querySelector(`#${tab} .areaArgContainer label`).innerHTML = "District: ";
-                }
-                else if (querySelect.value.includes("-city")) {
-                    areaArgContainer.style = "display: inline;"
-                    document.querySelector(`#${tab} .areaArgContainer label`).innerHTML = "City: ";
-                }
+                    if (querySelect.value.includes("-continent")) {
+                        areaArgContainer.style = "display: inline;"
+                        document.querySelector(`#${tab} .areaArgContainer label`).innerHTML = "Continent: ";
+                    }
+                    else if (querySelect.value.includes("-region")) {
+                        areaArgContainer.style = "display: inline;"
+                        document.querySelector(`#${tab} .areaArgContainer label`).innerHTML = "Region: ";
+                    }
+                    else if (querySelect.value.includes("-country")) {
+                        areaArgContainer.style = "display: inline;"
+                        document.querySelector(`#${tab} .areaArgContainer label`).innerHTML = "Country: ";
+                    }
+                    else if (querySelect.value.includes("-district")) {
+                        areaArgContainer.style = "display: inline;"
+                        document.querySelector(`#${tab} .areaArgContainer label`).innerHTML = "District: ";
+                    }
+                    else if (querySelect.value.includes("-city")) {
+                        areaArgContainer.style = "display: inline;"
+                        document.querySelector(`#${tab} .areaArgContainer label`).innerHTML = "City: ";
+                    }
 
-                else {
-                    areaArgContainer.style = "display: none;"
-                }
+                    else {
+                        areaArgContainer.style = "display: none;"
+                    }
 
-            };
+                };
+            }
         }
 
         function openTab(evt, tabName) {
@@ -369,6 +376,7 @@
         setupTab("City")
         setupTab("CapitalCity")
         setupTab("Population")
+        setupTab("Language")
 
         openTab({ currentTarget: document.getElementsByClassName("tablinks")[0] }, 'Country')
     </script>
