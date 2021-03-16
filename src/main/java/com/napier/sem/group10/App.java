@@ -16,6 +16,7 @@ import java.util.stream.Stream;
 import com.napier.sem.group10.filters.city.*;
 import com.napier.sem.group10.filters.capitalcity.*;
 import com.napier.sem.group10.filters.country.*;
+import com.napier.sem.group10.filters.language.Language;
 import com.napier.sem.group10.filters.population.*;
 import fi.iki.elonen.NanoHTTPD;
 
@@ -88,6 +89,8 @@ public class App extends NanoHTTPD {
         registerHandler(new CountryPop());
         registerHandler(new DistrictPop());
         registerHandler(new CityPopulation());
+
+        registerHandler(new Language());
 
     }
 
@@ -170,7 +173,7 @@ public class App extends NanoHTTPD {
             ICommandHandler handler = _resultHandlers.getOrDefault(command, null);
 
             if (handler == null) {
-                System.out.println(String.format("No handler registered for command \"%s\"", command));
+                System.out.printf("No handler registered for command \"%s\"%n", command);
                 return newFixedLengthResponse("!ERROR");
             }
 
