@@ -22,7 +22,7 @@ where feedback and constructive criticism are encouraged and welcomed.
 Team members must work collaboratively, share their code, work and sources. Team members
 must not unduly hold back or restrict access to work which is vital to the success of the
 team as a whole. Team members must also follow all university guidelines and rules on
-plagiarism and referencing others' work.
+plagiarism and referencing others work. 
 This code of conduct is produced by consensus and can be reviewed and changed at any time
 by consensus of the members of team 10. If any team member believes this code of conduct
 has been breached, action can be taken by the group and serious offences can result in expulsion from team 10.
