@@ -1,6 +1,5 @@
 import com.napier.sem.group10.filters.city.*;
-import fi.iki.elonen.NanoHTTPD;
-import org.junit.jupiter.api.*;
+
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -33,29 +32,36 @@ class CitiesTesting
     }
 
     @Test
-     void CityContNotNull()
+     void CityContStartsWith()
     {
         assertNotNull(CityCont.getCommand());
+        assertTrue(CityCont.getCommand().startsWith("city"));
     }
+
     @Test
-    void CityCountryNotNull()
+    void CityCountryStartsWith()
     {
         assertNotNull(CityCountry.getCommand());
+        assertTrue(CityCountry.getCommand().startsWith("city"));
+
     }
     @Test
-    void CityDistNotNull()
+    void CityDistStartsWith()
     {
         assertNotNull(CityDist.getCommand());
+        assertTrue(CityDist.getCommand().startsWith("city"));
     }
     @Test
-    void CityRegNotNull()
+    void CityRegStartsWith()
     {
         assertNotNull(CityCountry.getCommand());
+        assertTrue(CityReg.getCommand().startsWith("city"));
     }
     @Test
-    void CityWorldNotNull()
+    void CityWorldStartsWith()
     {
         assertNotNull(CityWorld.getCommand());
+        assertTrue(CityWorld.getCommand().startsWith("city"));
     }
 
 
