@@ -79,8 +79,11 @@ class CitiesTesting
 
     /* -------------------------------------------------------------------------------- */
 
-    /*
-    Executes a query on the command handler with provided args and asserts they expected rows match.
+    /**
+     * Executes a query on the command handler with provided args and asserts the expected rows match.
+     * @param handler The command handler
+     * @param args Args to execute the command with
+     * @param expectedRows An array of CSV lines that are expected
      */
     private void AssertQuery(ICommandHandler handler, Map<String, String> args, String[] expectedRows) {
         try {
