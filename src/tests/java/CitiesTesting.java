@@ -58,7 +58,7 @@ class CitiesTesting
     @Test
     public void CitiesInRegionCommandValid()
     {
-        assertNotNull(CityCountry.getCommand());
+        assertNotNull(CityReg.getCommand());
         assertTrue(CityReg.getCommand().startsWith("city"));
     }
 
