@@ -130,6 +130,10 @@ public class App extends NanoHTTPD {
         }
     }
 
+    public Connection GetSqlConnection() {
+        return _connection;
+    }
+
     /**
      * Executes the SQL statement for the given handler and returns the result string.
      *
