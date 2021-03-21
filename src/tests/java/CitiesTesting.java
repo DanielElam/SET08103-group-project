@@ -110,6 +110,38 @@ class CitiesTesting
      */
 
     @Test
+    public void CitiesInWorldQueryCorrect() {
+        var args = new HashMap<String, String>();
+        args.put("country", "United Kingdom");
+        var rows = new String[]{
+                "\"London\",\"United Kingdom\",\"England\",7285000",
+                "\"Birmingham\",\"United Kingdom\",\"England\",1013000",
+                "\"Glasgow\",\"United Kingdom\",\"Scotland\",619680",
+                "\"Liverpool\",\"United Kingdom\",\"England\",461000",
+                "\"Edinburgh\",\"United Kingdom\",\"Scotland\",450180",
+                "\"Sheffield\",\"United Kingdom\",\"England\",431607",
+                "\"Manchester\",\"United Kingdom\",\"England\",430000"
+        };
+        AssertQuery(CityCountry, args, rows);
+    }
+
+    @Test
+    public void CitiesInContinentQueryCorrect() {
+        var args = new HashMap<String, String>();
+        args.put("country", "United Kingdom");
+        var rows = new String[]{
+                "\"London\",\"United Kingdom\",\"England\",7285000",
+                "\"Birmingham\",\"United Kingdom\",\"England\",1013000",
+                "\"Glasgow\",\"United Kingdom\",\"Scotland\",619680",
+                "\"Liverpool\",\"United Kingdom\",\"England\",461000",
+                "\"Edinburgh\",\"United Kingdom\",\"Scotland\",450180",
+                "\"Sheffield\",\"United Kingdom\",\"England\",431607",
+                "\"Manchester\",\"United Kingdom\",\"England\",430000"
+        };
+        AssertQuery(CityCountry, args, rows);
+    }
+
+    @Test
     public void CitiesInCountryQueryCorrect() {
         var args = new HashMap<String, String>();
         args.put("country", "United Kingdom");
