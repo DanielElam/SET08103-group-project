@@ -15,7 +15,7 @@ import java.util.Map;
 
 public class CapitalCityTests {
 
-    private static Connection _connection;
+    private static Helper _helper;
 
     private static CapitalCitiesInContinent CapCont;
     private static CapitalCitiesInRegion CapReg;
@@ -24,37 +24,11 @@ public class CapitalCityTests {
     @BeforeAll
     public static void Init() throws IOException, InterruptedException {
         App app = new App();
-        _connection = app.GetSqlConnection();
+        _helper = new Helper(app.GetSqlConnection());
 
         CapCont = new CapitalCitiesInContinent();
         CapReg = new CapitalCitiesInRegion();
         CapWorld = new CapitalCitiesInWorld();
-    }
-
-    /**
-     * Executes a query on the command handler with provided args and asserts the expected rows match.
-     * @param handler The command handler
-     * @param args Args to execute the command with
-     * @param expectedRows An array of CSV lines that are expected
-     */
-    private void AssertQuery(ICommandHandler handler, Map<String, String> args, String[] expectedRows) {
-        try {
-            var statement = handler.prepareStatement(_connection, args);
-            ResultSet set = statement.executeQuery();
-            int i = 0;
-            while (set.next()) {
-                String line = handler.getResultRow(set);
-                assertEquals(line, expectedRows[i]);
-                i++;
-                if (i == expectedRows.length)
-                    break;
-            }
-            if (i < expectedRows.length)
-                fail("Expected more rows.");
-        }
-        catch (SQLException e) {
-            fail(e);
-        }
     }
 
     @Test
@@ -90,7 +64,7 @@ public class CapitalCityTests {
                 "\"Roma\",\"Italy\",2643581",
                 "\"Kyiv\",\"Ukraine\",2624000"
         };
-        AssertQuery(CapCont, args, rows);
+        _helper.AssertQuery(CapCont, args, rows);
     }
 
 
