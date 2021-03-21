@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Map;
 
 public class CountriesTesting {
@@ -37,6 +38,25 @@ public class CountriesTesting {
      * @param args Args to execute the command with
      * @param expectedRows An array of CSV lines that are expected
      */
+    private void AssertQuery(ICommandHandler handler, Map<String, String> args, String[] expectedRows) {
+        try {
+            var statement = handler.prepareStatement(_connection, args);
+            ResultSet set = statement.executeQuery();
+            int i = 0;
+            while (set.next()) {
+                String line = handler.getResultRow(set);
+                assertEquals(line, expectedRows[i]);
+                i++;
+                if (i == expectedRows.length)
+                    break;
+            }
+            if (i < expectedRows.length)
+                fail("Expected more rows.");
+        }
+        catch (SQLException e) {
+            fail(e);
+        }
+    }
 
 
     @Test
@@ -58,6 +78,22 @@ public class CountriesTesting {
     {
         assertNotNull(CountryWorld.getCommand());
         assertTrue(CountryWorld.getCommand().startsWith("country"));
+    }
+
+    @Test
+    public void CountriesInContinentQueryCorrect() {
+        var args = new HashMap<String, String>();
+        args.put("continent", "North America");
+        var rows = new String[]{
+                "\"London\",\"United Kingdom\",\"England\",7285000",
+                "\"Birmingham\",\"United Kingdom\",\"England\",1013000",
+                "\"Glasgow\",\"United Kingdom\",\"Scotland\",619680",
+                "\"Liverpool\",\"United Kingdom\",\"England\",461000",
+                "\"Edinburgh\",\"United Kingdom\",\"Scotland\",450180",
+                "\"Sheffield\",\"United Kingdom\",\"England\",431607",
+                "\"Manchester\",\"United Kingdom\",\"England\",430000"
+        };
+        AssertQuery(CountryCont, args, rows);
     }
 
 
