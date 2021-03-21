@@ -83,7 +83,7 @@ public class CountriesTesting {
     @Test
     public void CountriesInContinentQueryCorrect() {
         var args = new HashMap<String, String>();
-        args.put("continent", "North America");
+        //args.put("continent", "North America");
         var rows = new String[]{
                 "\"London\",\"United Kingdom\",\"England\",7285000",
                 "\"Birmingham\",\"United Kingdom\",\"England\",1013000",
