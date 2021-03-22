@@ -89,7 +89,7 @@ public class CountriesTesting {
                 "\"JPN\",\"Japan\",\"Asia\",\"Eastern Asia\",126714000,Tokyo",
 
         };
-
+        _helper.AssertQuery(CountryWorld, args, rows);
 
     }
 
