@@ -80,10 +80,10 @@ public class CountriesTesting {
         var rows = new String[]{
                 "\"CHN\",\"China\",\"Asia\",\"Eastern Asia\",1277558000,Peking",
                 "\"IND\",\"India\",\"Asia\",\"Southern and Central Asia\",1013662000,New Delhi",
-                "\"USA\",\"United States\",\"North America\",\"North America\",278357000,Washington ",
+                "\"USA\",\"United States\",\"North America\",\"North America\",278357000,Washington",
                 "\"IDN\",\"Indonesia\",\"Asia\",\"Southeast Asia\",212107000,Jakarta",
-                "\"BRA\",\"Brazil\",\"South America\",\"South America\",170115000,Brasília ",
-                "\"PAK\",\"Pakistan\",\"Asia\",\"Southern and Central Asia\",156483000,Islamabad ",
+                "\"BRA\",\"Brazil\",\"South America\",\"South America\",170115000,Brasília",
+                "\"PAK\",\"Pakistan\",\"Asia\",\"Southern and Central Asia\",156483000,Islamabad",
                 "\"RUS\",\"Russian Federation\",\"Europe\",\"Eastern Europe\",146934000,Moscow",
                 "\"BGD\",\"Bangladesh\",\"Asia\",\"Southern and Central Asia\",129155000,Dhaka",
                 "\"JPN\",\"Japan\",\"Asia\",\"Eastern Asia\",126714000,Tokyo",
@@ -91,6 +91,22 @@ public class CountriesTesting {
         };
         _helper.AssertQuery(CountryWorld, args, rows);
 
+    }
+
+    @Test
+    public void CountriesInRegionQueryCorrect() {
+        var args = new HashMap<String, String>();
+        args.put("region", "Western Europe");
+        var rows = new String[]{
+                "\"DEU\",\"Germany\",\"Europe\",\"Western Europe\",82164700,Berlin",
+                "\"FRA\",\"France\",\"Europe\",\"Western Europe\",59225700,Paris",
+                "\"NLD\",\"Netherlands\",\"Europe\",\"Western Europe\",15864000,Amsterdam",
+                "\"BEL\",\"Belgium\",\"Europe\",\"Western Europe\",10239000,Bruxelles [Brussel]",
+                "\"AUT\",\"Austria\",\"Europe\",\"Western Europe\",8091800,Wien",
+                "\"CHE\",\"Switzerland\",\"Europe\",\"Western Europe\",7160400,Bern",
+                "\"LUX\",\"Luxembourg\",\"Europe\",\"Western Europe\",435700,Luxembourg [Luxemburg/Lëtzebuerg]",
+        };
+        _helper.AssertQuery(CountryReg, args, rows);
     }
 
 }
