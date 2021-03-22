@@ -19,6 +19,6 @@ public abstract class PopulationCommandHandler implements ICommandHandler {
         long population = set.getLong("Population");
         long populationLivingInCities = set.getLong("PopulationLivingInCities");
         long populationNotLivingInCities = set.getLong("PopulationNotLivingCities");
-        return String.format("\"%s\",\"%s\",%s,%s", name, population, populationLivingInCities, populationNotLivingInCities);
+        return String.format("\"%s\",%s,%s,%s", name, population, populationLivingInCities, populationNotLivingInCities);
     }
 }
