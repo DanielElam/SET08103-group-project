@@ -33,22 +33,19 @@ public class CountriesTesting {
     }
 
     @Test
-    public void CountriesInContinentCommandValid()
-    {
+    public void CountriesInContinentCommandValid() {
         assertNotNull(CountryCont.getCommand());
         assertTrue(CountryWorld.getCommand().startsWith("country"));
     }
 
     @Test
-    public void CountriesInRegionCommandValid()
-    {
+    public void CountriesInRegionCommandValid() {
         assertNotNull(CountryReg.getCommand());
         assertTrue(CountryReg.getCommand().startsWith("country"));
     }
 
     @Test
-    public void CountriesInWorldCommandValid()
-    {
+    public void CountriesInWorldCommandValid() {
         assertNotNull(CountryWorld.getCommand());
         assertTrue(CountryWorld.getCommand().startsWith("country"));
     }
@@ -77,5 +74,23 @@ public class CountriesTesting {
         _helper.AssertQuery(CountryCont, args, rows);
     }
 
+    @Test
+    public void CountriesInWorldQueryCorrect() {
+        var args = new HashMap<String, String>();
+        var rows = new String[]{
+                "\"CHN\",\"China\",\"Asia\",\"Eastern Asia\",1277558000,Peking",
+                "\"IND\",\"India\",\"Asia\",\"Southern and Central Asia\",1013662000,New Delhi",
+                "\"USA\",\"United States\",\"North America\",\"North America\",278357000,Washington ",
+                "\"IDN\",\"Indonesia\",\"Asia\",\"Southeast Asia\",212107000,Jakarta",
+                "\"BRA\",\"Brazil\",\"South America\",\"South America\",170115000,Brasília ",
+                "\"PAK\",\"Pakistan\",\"Asia\",\"Southern and Central Asia\",156483000,Islamabad ",
+                "\"RUS\",\"Russian Federation\",\"Europe\",\"Eastern Europe\",146934000,Moscow",
+                "\"BGD\",\"Bangladesh\",\"Asia\",\"Southern and Central Asia\",129155000,Dhaka",
+                "\"JPN\",\"Japan\",\"Asia\",\"Eastern Asia\",126714000,Tokyo",
+
+        };
+
+
+    }
 
 }
