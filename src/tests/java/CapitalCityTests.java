@@ -67,6 +67,36 @@ public class CapitalCityTests {
         _helper.AssertQuery(CapCont, args, rows);
     }
 
+    @Test
+    public void CapitalCitiesInRegionQueryCorrect() {
+        var args = new HashMap<String, String>();
+        args.put("region", "Eastern Asia");
+        var rows = new String[]{
+                "\"Seoul\",\"South Korea\",9981619",
+                "\"Tokyo\",\"Japan\",7980230",
+                "\"Peking\",\"China\",7472000",
+                "\"Taipei\",\"Taiwan\",2641312",
+                "\"Pyongyang\",\"North Korea\",2484000",
+
+        };
+        _helper.AssertQuery(CapReg, args, rows);
+    }
+
+    @Test
+    public void CapitalCitiesInWorldQueryCorrect() {
+        var args = new HashMap<String, String>();
+        var rows = new String[]{
+                "\"Seoul\",\"South Korea\",9981619",
+                "\"Jakarta\",\"Indonesia\",9604900",
+                "\"Ciudad de México\",\"Mexico\",8591309",
+                "\"Moscow\",\"Russian Federation\",8389200",
+                "\"Tokyo\",\"Japan\",7980230",
+                "\"Peking\",\"China\",7472000",
+                "\"London\",\"United Kingdom\",7285000",
+
+        };
+        _helper.AssertQuery(CapWorld, args, rows);
+    }
 
 
 }
