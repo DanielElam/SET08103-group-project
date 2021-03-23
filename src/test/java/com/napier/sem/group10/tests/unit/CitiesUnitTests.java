@@ -1,4 +1,4 @@
-package com.napier.sem.group10;
+package com.napier.sem.group10.tests.unit;
 
 import group10.filters.city.*;
 import org.junit.jupiter.api.BeforeAll;

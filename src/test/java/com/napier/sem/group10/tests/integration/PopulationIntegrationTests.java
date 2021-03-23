@@ -1,5 +1,6 @@
-package com.napier.sem.group10;
+package com.napier.sem.group10.tests.integration;
 
+import com.napier.sem.group10.Helper;
 import group10.App;
 import group10.filters.population.PeopleLivingInAndOutOfCitiesInEachContinent;
 import group10.filters.population.PeopleLivingInAndOutOfCitiesInEachCountry;
