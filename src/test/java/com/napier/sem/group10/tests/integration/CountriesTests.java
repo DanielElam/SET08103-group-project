@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class CountriesTesting {
+public class CountriesTests {
 
     private static Helper _helper;
 

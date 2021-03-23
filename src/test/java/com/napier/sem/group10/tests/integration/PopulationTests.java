@@ -14,7 +14,7 @@ import java.util.HashMap;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class PopulationTesting {
+public class PopulationTests {
 
     private static Helper _helper;
 

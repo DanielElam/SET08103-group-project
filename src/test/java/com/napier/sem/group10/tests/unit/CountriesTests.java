@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class CountriesTesting {
+public class CountriesTests {
 
     private static CountriesInContinent CountryCont;
     private static CountriesInRegion CountryReg;
