@@ -3,6 +3,7 @@ package com.napier.sem.group10.tests.integration;
 import com.napier.sem.group10.*;
 import com.napier.sem.group10.filters.city.*;
 
+import com.napier.sem.group10.tests.Helper;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 

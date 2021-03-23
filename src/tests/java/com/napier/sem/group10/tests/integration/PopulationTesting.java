@@ -4,6 +4,7 @@ import com.napier.sem.group10.App;
 import com.napier.sem.group10.filters.population.PeopleLivingInAndOutOfCitiesInEachContinent;
 import com.napier.sem.group10.filters.population.PeopleLivingInAndOutOfCitiesInEachCountry;
 import com.napier.sem.group10.filters.population.PeopleLivingInAndOutOfCitiesInEachRegion;
+import com.napier.sem.group10.tests.Helper;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 

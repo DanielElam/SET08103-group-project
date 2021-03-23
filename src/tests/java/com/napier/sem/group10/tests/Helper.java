@@ -1,4 +1,4 @@
-package com.napier.sem.group10.tests.integration;
+package com.napier.sem.group10.tests;
 
 import com.napier.sem.group10.ICommandHandler;
 
