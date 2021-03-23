@@ -13,7 +13,7 @@ import java.util.Map;
 public class PeopleLivingInAndOutOfCitiesInEachCountry extends PopulationCommandHandler {
     @Override
     public String getCommand() {
-        return "population3";
+        return "population2";
     }
 
     @Override
