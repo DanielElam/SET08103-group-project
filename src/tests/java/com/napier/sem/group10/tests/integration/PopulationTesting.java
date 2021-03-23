@@ -1,9 +1,6 @@
-package integration;
+package com.napier.sem.group10.tests.integration;
 
 import com.napier.sem.group10.App;
-import com.napier.sem.group10.filters.country.CountriesInContinent;
-import com.napier.sem.group10.filters.country.CountriesInRegion;
-import com.napier.sem.group10.filters.country.CountriesInWorld;
 import com.napier.sem.group10.filters.population.PeopleLivingInAndOutOfCitiesInEachContinent;
 import com.napier.sem.group10.filters.population.PeopleLivingInAndOutOfCitiesInEachCountry;
 import com.napier.sem.group10.filters.population.PeopleLivingInAndOutOfCitiesInEachRegion;
@@ -26,7 +23,7 @@ public class PopulationTesting {
 
     @BeforeAll
     public static void Init() throws IOException, InterruptedException {
-        App app = new App();
+        App app = App.GetInstance();
         _helper = new Helper(app.GetSqlConnection());
 
         LivingInCitiesContinent = new PeopleLivingInAndOutOfCitiesInEachContinent();

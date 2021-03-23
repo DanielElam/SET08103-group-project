@@ -1,14 +1,10 @@
-package unit;
+package com.napier.sem.group10.tests.unit;
 
-import com.napier.sem.group10.App;
 import com.napier.sem.group10.filters.capitalcity.CapitalCitiesInContinent;
 import com.napier.sem.group10.filters.capitalcity.CapitalCitiesInRegion;
 import com.napier.sem.group10.filters.capitalcity.CapitalCitiesInWorld;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-import java.io.IOException;
-import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;

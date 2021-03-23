@@ -1,18 +1,13 @@
-package integration;
+package com.napier.sem.group10.tests.integration;
 
 import com.napier.sem.group10.*;
 import com.napier.sem.group10.filters.city.*;
 
-import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.HashMap;
-import java.util.Map;
 
 class CitiesTesting
 {
@@ -26,7 +21,7 @@ class CitiesTesting
 
     @BeforeAll
     public static void Init() throws IOException, InterruptedException {
-        App app = new App();
+        App app = App.GetInstance();
         _helper = new Helper(app.GetSqlConnection());
 
         CityCont = new CitiesInContinent();

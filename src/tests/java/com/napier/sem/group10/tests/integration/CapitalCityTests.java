@@ -1,19 +1,13 @@
-package integration;
+package com.napier.sem.group10.tests.integration;
 
 import com.napier.sem.group10.App;
-import com.napier.sem.group10.ICommandHandler;
 import com.napier.sem.group10.filters.capitalcity.*;
 
-import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.HashMap;
-import java.util.Map;
 
 public class CapitalCityTests {
 
@@ -25,7 +19,7 @@ public class CapitalCityTests {
 
     @BeforeAll
     public static void Init() throws IOException, InterruptedException {
-        App app = new App();
+        App app = App.GetInstance();
         _helper = new Helper(app.GetSqlConnection());
 
         CapCont = new CapitalCitiesInContinent();

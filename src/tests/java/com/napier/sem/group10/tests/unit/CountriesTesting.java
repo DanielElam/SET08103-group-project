@@ -1,14 +1,10 @@
-package unit;
+package com.napier.sem.group10.tests.unit;
 
-import com.napier.sem.group10.App;
 import com.napier.sem.group10.filters.country.CountriesInContinent;
 import com.napier.sem.group10.filters.country.CountriesInRegion;
 import com.napier.sem.group10.filters.country.CountriesInWorld;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-import java.io.IOException;
-import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;

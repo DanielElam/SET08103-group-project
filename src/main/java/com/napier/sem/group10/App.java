@@ -31,6 +31,12 @@ public class App extends NanoHTTPD {
     private Connection _connection;
     private final Map<String, ICommandHandler> _resultHandlers = new HashMap<>();
 
+    private static App _singleton;
+
+    public static App GetInstance() throws IOException, InterruptedException {
+        return _singleton != null ? _singleton :  (_singleton = new App());
+    }
+
     /**
      * App constructor.
      * Connects to the database and initializes the NanoHTTP server
@@ -38,7 +44,7 @@ public class App extends NanoHTTPD {
      * @throws IOException          In the case the NanoHTTP server could not be started
      * @throws InterruptedException In the case the thread is interrupted
      */
-    public App() throws IOException, InterruptedException {
+    private App() throws IOException, InterruptedException {
         super(2904);
         registerHandlers();
         connectDatabase();
