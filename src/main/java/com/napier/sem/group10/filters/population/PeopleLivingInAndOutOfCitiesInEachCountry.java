@@ -13,12 +13,12 @@ import java.util.Map;
 public class PeopleLivingInAndOutOfCitiesInEachCountry extends PopulationCommandHandler {
     @Override
     public String getCommand() {
-        return "population2";
+        return "population3";
     }
 
     @Override
     public PreparedStatement prepareStatement(Connection connection, Map<String, String> args) throws SQLException {
-        PreparedStatement statement = connection.prepareStatement("TODO");
+        PreparedStatement statement = connection.prepareStatement("SELECT country.Name AS Name, SUM(country.Population) AS Population, SUM(city.Population) AS PopulationLivingInCities, SUM(country.Population) - SUM(city.Population) AS PopulationNotLivingCities FROM country JOIN city ON city.CountryCode = country.Code GROUP BY country.Name;");
         return statement;
     }
 }
