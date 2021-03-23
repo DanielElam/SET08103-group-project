@@ -1,3 +1,5 @@
+package integration;
+
 import com.napier.sem.group10.App;
 import com.napier.sem.group10.ICommandHandler;
 import com.napier.sem.group10.filters.country.*;
@@ -29,25 +31,6 @@ public class CountriesTesting {
         CountryCont = new CountriesInContinent();
         CountryReg = new CountriesInRegion();
         CountryWorld = new CountriesInWorld();
-
-    }
-
-    @Test
-    public void CountriesInContinentCommandValid() {
-        assertNotNull(CountryCont.getCommand());
-        assertTrue(CountryWorld.getCommand().startsWith("country"));
-    }
-
-    @Test
-    public void CountriesInRegionCommandValid() {
-        assertNotNull(CountryReg.getCommand());
-        assertTrue(CountryReg.getCommand().startsWith("country"));
-    }
-
-    @Test
-    public void CountriesInWorldCommandValid() {
-        assertNotNull(CountryWorld.getCommand());
-        assertTrue(CountryWorld.getCommand().startsWith("country"));
     }
 
     @Test

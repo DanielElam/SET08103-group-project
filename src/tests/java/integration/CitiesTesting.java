@@ -1,5 +1,6 @@
-import com.napier.sem.group10.App;
-import com.napier.sem.group10.ICommandHandler;
+package integration;
+
+import com.napier.sem.group10.*;
 import com.napier.sem.group10.filters.city.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -34,54 +35,6 @@ class CitiesTesting
         CityReg = new CitiesInRegion();
         CityWorld = new CitiesInWorld();
     }
-
-    /*
-        Command Valid tests
-        Ensure the command name returned by getCommand() is the right category name
-     */
-
-    @Test
-    public void CitiesInWorldCommandValid()
-    {
-        assertNotNull(CityWorld.getCommand());
-        assertTrue(CityWorld.getCommand().startsWith("city"));
-    }
-
-    @Test
-    public void CitiesInContinentCommandValid()
-    {
-        assertNotNull(CityCont.getCommand());
-        assertTrue(CityCont.getCommand().startsWith("city"));
-    }
-
-    @Test
-    public void CitiesInRegionCommandValid()
-    {
-        assertNotNull(CityReg.getCommand());
-        assertTrue(CityReg.getCommand().startsWith("city"));
-    }
-
-    @Test
-    public void CitiesInCountryCommandValid()
-    {
-        assertNotNull(CityCountry.getCommand());
-        assertTrue(CityCountry.getCommand().startsWith("city"));
-
-    }
-
-    @Test
-    public void CitiesInDistrictCommandValid()
-    {
-        assertNotNull(CityDist.getCommand());
-        assertTrue(CityDist.getCommand().startsWith("city"));
-    }
-
-    /* -------------------------------------------------------------------------------- */
-
-    /*
-        Query tests
-        Ensure the queries return expected results.
-     */
 
     @Test
     public void CitiesInWorldQueryCorrect() {
@@ -145,6 +98,4 @@ class CitiesTesting
         };
         _helper.AssertQuery(CityCountry, args, rows);
     }
-
-    /* -------------------------------------------------------------------------------- */
 }

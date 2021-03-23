@@ -1,3 +1,5 @@
+package integration;
+
 import com.napier.sem.group10.App;
 import com.napier.sem.group10.filters.country.CountriesInContinent;
 import com.napier.sem.group10.filters.country.CountriesInRegion;
@@ -30,25 +32,6 @@ public class PopulationTesting {
         LivingInCitiesContinent = new PeopleLivingInAndOutOfCitiesInEachContinent();
         LivingInCitiesCountry = new PeopleLivingInAndOutOfCitiesInEachCountry();
         LivingInCitiesRegion = new PeopleLivingInAndOutOfCitiesInEachRegion();
-
-    }
-
-    @Test
-    public void LivingInCitiesContinentCommandValid() {
-        assertNotNull(LivingInCitiesContinent.getCommand());
-        assertTrue(LivingInCitiesContinent.getCommand().startsWith("population"));
-    }
-
-    @Test
-    public void LivingInCitiesCountryCommandValid() {
-        assertNotNull(LivingInCitiesCountry.getCommand());
-        assertTrue(LivingInCitiesCountry.getCommand().startsWith("population"));
-    }
-
-    @Test
-    public void LivingInCitiesRegionCommandValid() {
-        assertNotNull(LivingInCitiesRegion.getCommand());
-        assertTrue(LivingInCitiesRegion.getCommand().startsWith("population"));
     }
 
     @Test

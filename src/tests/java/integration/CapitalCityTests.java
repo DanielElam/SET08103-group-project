@@ -1,3 +1,5 @@
+package integration;
+
 import com.napier.sem.group10.App;
 import com.napier.sem.group10.ICommandHandler;
 import com.napier.sem.group10.filters.capitalcity.*;
@@ -29,27 +31,6 @@ public class CapitalCityTests {
         CapCont = new CapitalCitiesInContinent();
         CapReg = new CapitalCitiesInRegion();
         CapWorld = new CapitalCitiesInWorld();
-    }
-
-    @Test
-    public void CapitalCitiesInContinentCommandValid()
-    {
-        assertNotNull(CapCont.getCommand());
-        assertTrue(CapCont.getCommand().startsWith("capitalcity"));
-    }
-
-    @Test
-    public void CapitalCitiesInRegionCommandValid()
-    {
-        assertNotNull(CapReg.getCommand());
-        assertTrue(CapReg.getCommand().startsWith("capitalcity"));
-    }
-
-    @Test
-    public void CapitalCitiesInWorldCommandValid()
-    {
-        assertNotNull(CapWorld.getCommand());
-        assertTrue(CapWorld.getCommand().startsWith("capitalcity"));
     }
 
     @Test
