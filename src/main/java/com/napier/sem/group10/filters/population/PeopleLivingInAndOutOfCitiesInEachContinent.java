@@ -18,7 +18,7 @@ public class PeopleLivingInAndOutOfCitiesInEachContinent extends PopulationComma
 
     @Override
     public PreparedStatement prepareStatement(Connection connection, Map<String, String> args) throws SQLException {
-        PreparedStatement statement = connection.prepareStatement("TODO");
+        PreparedStatement statement = connection.prepareStatement("SELECT country.Continent AS Name, SUM(country.Population) AS Population, SUM(city.Population) AS PopulationLivingInCities, SUM(country.Population) - SUM(city.Population) AS PopulationNotLivingCities FROM country JOIN city ON city.CountryCode = country.Code GROUP BY country.Continent;");
         return statement;
     }
 }
