@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="SEM-CW" />
+        <module name="SET08103-group-project" />
       </profile>
     </annotationProcessing>
   </component>

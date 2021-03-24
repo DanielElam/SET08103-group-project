@@ -12,7 +12,8 @@ RUN mvn -B -e -T 1C install
 # Package stage
 #
 FROM adoptopenjdk/openjdk13:ubuntu-jre
-ARG JAR_FILE=/usr/src/app/target/*-with-dependencies.jar
+ARG JAR_FILE=/usr/src/app/target/SEM-CW-jar-with-dependencies.jar
 COPY --from=0 ${JAR_FILE} app.jar
 EXPOSE 2004
+EXPOSE 2904
 ENTRYPOINT ["java","-jar","/app.jar"]

@@ -7,5 +7,6 @@ services:
 after_success:
   - docker-compose build
   - docker-compose up -d
-  - travis_wait 20
+  - travis_wait 10
   - docker-compose down
+  - bash <(curl -s https://codecov.io/bash) -t 7c8c665b-7327-4441-8d80-e9a2690d0eba
