@@ -2,6 +2,7 @@
 [![Build Status](https://travis-ci.com/DanielElam/SET08103-group-project.svg?branch=master)](https://travis-ci.com/DanielElam/SET08103-group-project)
 [![LICENSE](https://img.shields.io/github/license/DanielElam/SET08103-group-project.svg?style=flat-square)](https://github.com/DanielElam/SET08103-group-project/blob/master/LICENSE)
 [![Releases](https://img.shields.io/github/release/DanielElam/SET08103-group-project/all.svg?style=flat-square)](https://github.com/DanielElam/SET08103-group-project/releases)
+[![codecov](https://codecov.io/gh/DanielElam/SET08103-group-project/branch/master/graph/badge.svg?token=GTBVAHLR1K)](https://codecov.io/gh/DanielElam/SET08103-group-project)
 
 ![](https://i.imgur.com/VBQ1FNs.png)
 
