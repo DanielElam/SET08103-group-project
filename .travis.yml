@@ -1,12 +1,42 @@
-sudo: required
 language: java
-jdk:
-  - openjdk15
+
+sudo: false
+
+addons:
+  hosts:
+    - db
+
 services:
   - docker
+
+install:
+  - docker-compose up -d db
+  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+
+before_script:
+  - mvn clean
+
+jobs:
+  include:
+    - stage: unit tests
+      install: skip
+      jdk: oraclejdk11
+      script: mvn test -Dtest=com.napier.sem.group10.tests.unit.*
+    - stage: integration tests
+      jdk: oraclejdk11
+      script: mvn test -Dtest=com.napier.sem.group10.tests.integration.*
+    - stage: deploy
+      install: skip
+      jdk: oraclejdk11
+      script:
+        - mvn package -DskipTests=true -Dmaven.javadoc.skip=true
+        - docker-compose up --abort-on-container-exit
+
+stages:
+  - unit tests
+  - integration tests
+  - name: deploy
+    if: branch = master
+
 after_success:
-  - docker-compose build
-  - docker-compose up -d
-  - travis_wait 10
-  - docker-compose down
-  - bash <(curl -s https://codecov.io/bash) -t 7c8c665b-7327-4441-8d80-e9a2690d0eba
+  - bash <(curl -s https://codecov.io/bash) -t 5fc4669d-1a7b-4ead-bb1a-b075763266f6
